@@ -1,6 +1,6 @@
 {
   "name": "thor-schedule",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Schedule client for [thorbuster](https://github.com/teambition/thorbuster) service",
   "main": "index.js",
   "dependencies": {

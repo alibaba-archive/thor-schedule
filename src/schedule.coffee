@@ -45,11 +45,10 @@ class Schedule
   ###
   schedule: (data = {}) ->
     {callback, callbackData} = data
-    callback ?= ->
     callbackData ?= {}
-    return callback(callbackData) unless initialized
-
-    data.callbackId ?= @sha1(callback)
+    unless initialized
+      return callback(callbackData) if callback?
+    data.callbackId ?= @sha1(callback) if callback?
     data.clientId = clientId
     delete data.callback
     requester.send(JSON.stringify(data))

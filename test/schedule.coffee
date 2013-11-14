@@ -17,7 +17,6 @@ describe 'thor#schedule', ->
       schedule: now + 1000
       callback: (data) ->
         duration = Date.now() - now
-        console.log "duration: #{duration}"
         duration.should.be.within(1000, 1100)
         data.msg.should.eql(msg)
         done()
@@ -25,7 +24,6 @@ describe 'thor#schedule', ->
 
   it 'should be canceled in 500 milliseconds', (done) ->
     now = Date.now()
-    msg = "I will be canceled"
     taskId = Math.round(Math.random() * 100000)
     schedule.schedule
       schedule: now + 1000
@@ -38,6 +36,21 @@ describe 'thor#schedule', ->
       ), 500
 
     setTimeout(done, 2000)
+
+  it 'should be rescheduled to 2 seconds', (done) ->
+    now = Date.now()
+    taskId = Math.round(Math.random() * 100000)
+    schedule.schedule
+      schedule: now + 1000
+      taskId: taskId
+      callback: ->
+        duration = Date.now() - now
+        duration.should.be.within(2000, 2100)
+        done()
+
+    schedule.schedule
+      schedule: now + 2000
+      taskId: taskId
 
   it 'should not disturb each other on different tasks', (done) ->
     now = Date.now()
@@ -52,14 +65,12 @@ describe 'thor#schedule', ->
     schedule.schedule
       schedule: now + 1000
       callback: ->
-        console.log 'I am task 1'
         task1Finished = true
         _callback()
 
     schedule.schedule
       schedule: now + 1000
       callback: ->
-        console.log 'I am task 2'
         task2Finished = true
         _callback()
 

@@ -4,7 +4,7 @@ Schedule client for [thorbuster](https://github.com/teambition/thorbuster) servi
 
 # Example
 
-## `initialize`
+## initialize
 ```coffeescript
 schedule = require('thor-schedule').initialize({
   req: 'tcp://localhost:5567'
@@ -13,7 +13,7 @@ schedule = require('thor-schedule').initialize({
 })
 ```
 
-## `schedule`
+## schedule
 ```coffeescript
 schedule.schedule
   schedule: Date.now() + 1000
@@ -23,7 +23,7 @@ schedule.schedule
 ==> 'I will be back'
 ```
 
-## `cancel`
+## cancel
 ```coffeescript
 schedule.schedule
   schedule: Date.now() + 1000

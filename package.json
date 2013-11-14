@@ -7,7 +7,10 @@
     "zmq": "~2.5.1"
   },
   "devDependencies": {
-    "cake-dog": "~0.2.1"
+    "cake-dog": "~0.2.2",
+    "should": "~2.1.0",
+    "coffee-script": "~1.6.3",
+    "mocha": "~1.14.0"
   },
   "scripts": {
     "test": "make test"

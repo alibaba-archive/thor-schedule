@@ -35,13 +35,13 @@ class Schedule
     return this
 
   ###
-  # Schedule async tasks
-  # @schedule `Date` `required` Schedule date string or timestamp
-  # @callback `Mixed` `required` Callback function
-  # @callbackData `Mixed` `optional` Callback data
-  # @taskId `String` `optional` Task identify; without this property, cancel will not work
-  # @callbackId `String` `optional` Specific callback id
-  # @jobs `Mixed` `optional` Run jobs on thorbuster process; Must be pre-defined on thorbuster
+  Schedule async tasks
+  @schedule `Date` `required` Schedule date string or timestamp
+  @callback `Mixed` `required` Callback function
+  @callbackData `Mixed` `optional` Callback data
+  @taskId `String` `optional` Task identify; without this property, cancel will not work
+  @callbackId `String` `optional` Specific callback id
+  @jobs `Mixed` `optional` Run jobs on thorbuster process; Must be pre-defined on thorbuster
   ###
   schedule: (data = {}) ->
     {callback, callbackData} = data
@@ -57,8 +57,8 @@ class Schedule
     tasks[data.callbackId] = callback
 
   ###
-  # Cancel scheduled tasks
-  # @taskId `String` `required` Task identify
+  Cancel scheduled tasks
+  @taskId `String` `required` Task identify
   ###
   cancel: (data) ->
     return false unless data.taskId?
